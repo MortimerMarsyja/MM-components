@@ -1,4 +1,3 @@
-
 const CSSRESET = `
 * {
     margin: 0;
@@ -9,6 +8,6 @@ const CSSRESET = `
   html {
     font-size: 62.5%;
   }
-`
+`;
 
 export default CSSRESET;
