@@ -1,36 +1,35 @@
 //Deps
 import React from "react";
 //Components
+import Form from "../../00-Components/Form";
 import Logo from "../../00-Components/Logo";
-import DonutGraph from "../../00-Components/DonutGraph";
-const testJson = {
-  colors: ["#fa6066", "#6e64f2", "#e7eb50", "#52ad63"],
-  values: [
-    { label: "Tenis Popularity", value: 20 },
-    { label: "Basket Popularity", value: 30 },
-    {
-      label: "Soccer Popularity",
-      value: 15,
-    },
-    {
-      label: "Martial Arts Popularity",
-      value: 25,
-    },
-  ],
-};
+import * as Yup from "yup";
+
+const formInputConfig = [
+  {
+    component: "input",
+    label: "Name",
+    name: "name",
+    yupValidation: Yup.string().min(2, "Too Short!").required("Required"),
+    initialValue: "Your Name",
+  },
+  {
+    component: "input",
+    label: "Age",
+    name: "age",
+    yupValidation: Yup.number().required("Required"),
+    initialValue: "Age Number",
+  },
+];
 const MainPage = () => {
   return (
     <>
       <Logo />
       <h1>
-        Hor Donut Component V<sub>1</sub>
+        Hor Form Component V<sub>1</sub>
       </h1>
-      <div style={{ width: "300px" }}>
-        <DonutGraph
-          colors={testJson.colors}
-          values={testJson.values}
-          initialOffset={20}
-        />
+      <div>
+        <Form formConfig={formInputConfig} />
       </div>
     </>
   );
