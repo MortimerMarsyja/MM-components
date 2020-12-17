@@ -55,7 +55,6 @@ const FormikForm = ({ formConfig }, props) => {
 
   return (
     <StyledForm>
-      <h1>Test Form</h1>
       {validations && initialValues && (
         <Formik
           initialValues={initialValues}
