@@ -1,10 +1,16 @@
+// Deps
 import React, { useEffect, useState } from "react";
+// Utils
+import measureElement from "../../08-utils/measures";
+// Components
 import NestedTooltipComponent from "./NestedTooltipComponent";
 import StyledTooltip from "./Tooltip.style";
 
 const checkSize = (setIsOverFlown) => {
   const membraneWidth = document.getElementById("membrane").clientWidth;
-  const contentWidth = document.getElementById("content").clientWidth;
+  const contentWidth = measureElement(
+    document.getElementById("content").clientWidth
+  ).width;
   if (membraneWidth < contentWidth) {
     setIsOverFlown(true);
   }

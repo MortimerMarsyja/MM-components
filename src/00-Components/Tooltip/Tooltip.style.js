@@ -6,12 +6,11 @@ const StyledTooltip = styled.div`
   .membrane {
     margin-bottom: 12px;
     height: auto;
-    white-space: nowrap;
     position: relative;
-    width: ${(props) => props.parentLimitingSize};
+    white-space: nowrap;
+    max-width: ${(props) => props.parentLimitingSize};
   }
   .content {
-    display: block;
     overflow: hidden;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
