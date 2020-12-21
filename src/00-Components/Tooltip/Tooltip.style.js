@@ -5,16 +5,17 @@ const StyledTooltip = styled.div`
   width: auto;
   .membrane {
     margin-bottom: 12px;
-    overflow: hidden;
-    white-space: nowrap;
-    -ms-text-overflow: ellipsis;
-    text-overflow: ellipsis;
     height: auto;
+    white-space: nowrap;
     position: relative;
     width: ${(props) => props.parentLimitingSize};
   }
   .content {
     display: block;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    width:auto;
   }
   .nestedTooltip {
     p {
@@ -26,10 +27,10 @@ const StyledTooltip = styled.div`
     color: #fefefe;
     width: auto;
     z-index: 999;
-    fontsize: 14px;
+    font-size: 14px;
     padding: 3px 6px;
     border-radius: 3px;
-    boxshadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.33s linear;

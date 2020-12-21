@@ -8,21 +8,24 @@ const formInputConfig = [
     label: "Name",
     name: "name",
     yupValidation: Yup.string().min(2, "Too Short!").required("Required"),
-    initialValue: "Your Name",
+    initialValue: "",
   },
   {
     component: "input",
     label: "Age",
     name: "age",
     yupValidation: Yup.number().required("Required"),
-    initialValue: "Age Number",
+    initialValue: "",
+    dependency: "name",
   },
 ];
 
 const FormTestPage = () => {
-  <div>
-    <Form formConfig={formInputConfig} />
-  </div>;
+  return (
+    <div>
+      <Form formConfig={formInputConfig} />
+    </div>
+  );
 };
 
 export default FormTestPage;
