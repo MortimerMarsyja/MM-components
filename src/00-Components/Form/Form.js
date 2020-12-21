@@ -84,9 +84,6 @@ const FormikForm = ({ formConfig }, props) => {
     setValidations(configSchema(formConfig));
     setInitialValues(getInitialValues(formConfig));
   }, [formConfig.length]);
-  useEffect(() => {
-    console.log(filledList);
-  }, [filledList]);
 
   const handleSubmit = (values) => {
     alert(JSON.stringify(values));
