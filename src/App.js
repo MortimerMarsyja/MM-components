@@ -18,6 +18,7 @@ import iconList from "./04-Constants/svg/iconList";
 
 //Pages
 const MainPage = React.lazy(() => import("./01-Pages/MainPage"));
+const FormPage = React.lazy(() => import("./01-Pages/FormTestPage"));
 const OutOfBounds = React.lazy(() => import("./01-Pages/OutOfBounds"));
 
 const createReduxStore = () => {
@@ -36,6 +37,7 @@ const createReduxStore = () => {
 
 const COMPONENT_PATHS = [
   { Component: MainPage, path: PATHS.MAIN_PAGE },
+  { Component: FormPage, path: PATHS.FORM_PAGE },
   { Component: OutOfBounds, path: PATHS.OUT_OF_BOUNDS },
 ];
 

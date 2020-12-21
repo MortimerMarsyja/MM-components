@@ -2,7 +2,7 @@ import React from "react";
 import { ErrorMessage, Field } from "formik";
 import TextField from "@material-ui/core/TextField";
 
-const Input = ({ name, label, type = "text", required = false }) => {
+const Input = ({ name, label, type = "text", required = false, ...props }) => {
   return (
     <div className="Input">
       <Field
@@ -14,6 +14,7 @@ const Input = ({ name, label, type = "text", required = false }) => {
         fullWidth
         type={type}
         helperText={<ErrorMessage name={name} />}
+        {...props}
       />
     </div>
   );

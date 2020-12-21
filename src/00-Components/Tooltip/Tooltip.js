@@ -22,14 +22,14 @@ const Tooltip = ({ text, parentLimitingSize, tooltipText }) => {
   return (
     <StyledTooltip parentLimitingSize={parentLimitingSize}>
       <div id={"membrane"} className="membrane">
-        <p
+        <div
           id="content"
           className="content"
           onMouseEnter={() => mouseEnterHandler()}
           onMouseLeave={() => setIsHovered(false)}
         >
           {text}
-        </p>
+        </div>
       </div>
       <NestedTooltipComponent
         tooltipText={tooltipText}

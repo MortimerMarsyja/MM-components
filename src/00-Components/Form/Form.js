@@ -5,6 +5,10 @@ import Input from "./Input";
 import HorButton from "../../00-Components/HorButton";
 import StyledForm from "./form.style";
 
+const isMissing = (value) => {
+  return value === undefined || null || "" ? true : false;
+};
+
 const configSchema = (formConfig) => {
   let schema = {};
   formConfig.forEach((validationItem) => {
@@ -28,12 +32,43 @@ const getInitialValues = (formConfig) => {
   return initValues;
 };
 
-const componentRenderer = (component, componentParams) => {
+const checkValidation = (dependency, filledList) => {
+  if (dependency) {
+    return !filledList.includes(dependency);
+  } else {
+    return false;
+  }
+};
+
+const handleKeyUp = (value, dependency, filledList, setFilledList) => {
+  if (!isMissing(value) && !filledList.includes(dependency)) {
+    setFilledList([...filledList, dependency]);
+  }
+  if (value === "" && filledList.length > 0) {
+    setFilledList(filledList.filter((listVal) => listVal !== dependency));
+  }
+};
+
+const componentRenderer = (
+  component,
+  componentParams,
+  filledList,
+  setFilledList
+) => {
   const availableComponents = {
     input: () => (
       <Input
         name={componentParams.name}
         label={componentParams.label}
+        onKeyUp={(e) =>
+          handleKeyUp(
+            e.target.value,
+            componentParams.name,
+            filledList,
+            setFilledList
+          )
+        }
+        disabled={checkValidation(componentParams.dependency, filledList)}
         required
       />
     ),
@@ -42,6 +77,7 @@ const componentRenderer = (component, componentParams) => {
 };
 
 const FormikForm = ({ formConfig }, props) => {
+  const [filledList, setFilledList] = useState([]);
   const [validations, setValidations] = useState();
   const [initialValues, setInitialValues] = useState();
   useEffect(() => {
@@ -66,10 +102,16 @@ const FormikForm = ({ formConfig }, props) => {
             return (
               <Form className="form-component">
                 {formConfig.map((input) => {
-                  return componentRenderer(input.component, {
-                    name: input.name,
-                    label: input.label,
-                  });
+                  return componentRenderer(
+                    input.component,
+                    {
+                      name: input.name,
+                      label: input.label,
+                      dependency: input.dependency,
+                    },
+                    filledList,
+                    setFilledList
+                  );
                 })}
                 <div className="form-component_input-container">
                   <HorButton
