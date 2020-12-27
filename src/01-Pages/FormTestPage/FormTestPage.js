@@ -1,6 +1,8 @@
 import React from "react";
 import * as Yup from "yup";
 import Form from "../../00-Components/Form";
+// styles
+import StyledFormPage from "./StyledFormPage.style";
 
 const formInputConfig = [
   {
@@ -22,9 +24,10 @@ const formInputConfig = [
 
 const FormTestPage = () => {
   return (
-    <div>
+    <StyledFormPage>
+      <h2>Form Component</h2>
       <Form formConfig={formInputConfig} />
-    </div>
+    </StyledFormPage>
   );
 };
 

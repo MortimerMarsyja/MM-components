@@ -9,7 +9,10 @@ import StyledApp from "./07-Styles/app.style";
 import PATHS from "./04-Constants/Routes";
 //Components
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import LoadingComponent from "./00-Components/LoadingComponent";
+import LoadingComponent from "./00-Components/HorLoading";
+import HorHeaderComponent from "./00-Components/HorHeader";
+import HorSideBar from "./00-Components/HorSideBar";
+import Logo from "./00-Components/Logo";
 //Reducers
 import rootReducer from "./03-Reducers/rootReducer";
 import { Provider } from "react-redux";
@@ -19,6 +22,8 @@ import iconList from "./04-Constants/svg/iconList";
 //Pages
 const MainPage = React.lazy(() => import("./01-Pages/MainPage"));
 const FormPage = React.lazy(() => import("./01-Pages/FormTestPage"));
+const TagPage = React.lazy(() => import("./01-Pages/TagPage"));
+const SwitchPage = React.lazy(() => import("./01-Pages/SwitchPage"));
 const OutOfBounds = React.lazy(() => import("./01-Pages/OutOfBounds"));
 
 const createReduxStore = () => {
@@ -38,7 +43,16 @@ const createReduxStore = () => {
 const COMPONENT_PATHS = [
   { Component: MainPage, path: PATHS.MAIN_PAGE },
   { Component: FormPage, path: PATHS.FORM_PAGE },
+  { Component: TagPage, path: PATHS.TAG_PAGE },
+  { Component: SwitchPage, path: PATHS.SWITCH_PAGE },
   { Component: OutOfBounds, path: PATHS.OUT_OF_BOUNDS },
+];
+
+const urlList = [
+  { url: "/", name: "Main page" },
+  { url: "/form-page", name: "Form" },
+  { url: "/tag-page", name: "Tag" },
+  { url: "/switch-page", name: "Switch" },
 ];
 
 function App() {
@@ -46,27 +60,33 @@ function App() {
     <StyledApp>
       <Provider store={createReduxStore()}>
         <BrowserRouter>
-          <Switch>
-            {COMPONENT_PATHS.map(({ path, Component }) => (
-              <Route path={path} exact key={path}>
-                <Suspense
-                  fallback={
-                    <div>
-                      Loading...
-                      <LoadingComponent
-                        size="32px"
-                        icon={iconList.llama}
-                        color="red"
-                      />
-                    </div>
-                  }
-                >
-                  <Component />
-                </Suspense>
-              </Route>
-            ))}
-            <Redirect to={PATHS.PAGE_NOT_FOUND} />
-          </Switch>
+          <HorHeaderComponent>
+            <Logo className="header-logo" />
+          </HorHeaderComponent>
+          <div style={{ display: "flex", height: "100vh" }}>
+            <HorSideBar urlList={urlList} />
+            <Switch>
+              {COMPONENT_PATHS.map(({ path, Component }) => (
+                <Route path={path} exact key={path}>
+                  <Suspense
+                    fallback={
+                      <div>
+                        Loading...
+                        <LoadingComponent
+                          size="32px"
+                          icon={iconList.llama}
+                          color="red"
+                        />
+                      </div>
+                    }
+                  >
+                    <Component />
+                  </Suspense>
+                </Route>
+              ))}
+              <Redirect to={PATHS.PAGE_NOT_FOUND} />
+            </Switch>
+          </div>
         </BrowserRouter>
       </Provider>
     </StyledApp>
