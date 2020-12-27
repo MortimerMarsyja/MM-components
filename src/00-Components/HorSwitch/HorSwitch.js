@@ -7,29 +7,39 @@ const HorSwitchComponent = ({
   valueFunction,
   trueIcon,
   falseIcon,
+  labelName,
   trueColor,
   falseColor,
 }) => {
   const [boolVal, setBoolVal] = useState(switchInitialState);
   const handleClick = () => {
     setBoolVal(!boolVal);
-    valueFunction(boolVal);
   };
 
   const iconReturner = (boolVal) => {
     if (boolVal === true) {
-      return <div>{trueIcon}</div>;
+      return <div className="icon">{trueIcon}</div>;
     }
     if (boolVal === false) {
-      return <div>{falseIcon}</div>;
+      return <div className="icon">{falseIcon}</div>;
     }
   };
+
   return (
-    <StyledHorSwitchComponent trueColor={trueColor} falseColor={falseColor}>
-      <div className={`switch-container ${boolVal}`} onClick={handleClick}>
-        <span className={`icon ${boolVal}`}>{iconReturner(boolVal)}</span>
-        <span className={`switcher ${boolVal}`} />
-      </div>
+    <StyledHorSwitchComponent
+      className="switch"
+      trueColor={trueColor}
+      falseColor={falseColor}
+    >
+      <input
+        id={labelName}
+        type="checkbox"
+        checked={boolVal}
+        onClick={handleClick}
+      />
+      <span className="slider round">
+        <div className={`circle ${boolVal}`}>{iconReturner(boolVal)}</div>
+      </span>
     </StyledHorSwitchComponent>
   );
 };

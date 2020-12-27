@@ -5,9 +5,6 @@ const CSSRESET = `
     font-size: 1em;
     font-family: inherit;
   }
-  html {
-    font-size: 62.5%;
-  }
 `;
 
 export default CSSRESET;

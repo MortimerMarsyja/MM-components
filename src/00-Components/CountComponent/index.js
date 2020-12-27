@@ -1,1 +1,1 @@
-export {default} from './CountComponent';
+export { default } from "./CountComponent";
