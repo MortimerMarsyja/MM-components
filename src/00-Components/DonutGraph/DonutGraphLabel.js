@@ -1,4 +1,6 @@
 import React from "react";
+// components
+import Tooltip from "../Tooltip";
 
 const DonutGraphLabel = (item) => {
   return (
@@ -12,7 +14,12 @@ const DonutGraphLabel = (item) => {
           fill={item.color}
         />
       </svg>
-      <p className="label">{item.item.label}</p>
+      <Tooltip
+        className="label"
+        text={item.item.label}
+        tooltipText={item.item.label}
+        parentLimitingSize="120px"
+      />
       <p>{item.item.value}%</p>
     </div>
   );

@@ -1,4 +1,6 @@
+// deps
 import React, { useState } from "react";
+// components
 import SegmentComponent from "./SegmentComponent";
 import DonutGraphLabel from "./DonutGraphLabel";
 import StyledDonutGraph from "./donutGraph.style";
@@ -24,10 +26,7 @@ const DonutGraph = ({ colors, values, icons, initialOffset }, ...props) => {
 
   return (
     <StyledDonutGraph>
-      {label && (
-        <DonutGraphLabel item={label.segmentData} color={colors[label.index]} />
-      )}
-      <svg width="100%" height="100%" viewBox="0 0 42 42" className="donut">
+      <svg width="80px" height="100%" viewBox="0 0 42 42" className="donut">
         <circle
           className="donut-ring"
           cx="21"
@@ -35,7 +34,7 @@ const DonutGraph = ({ colors, values, icons, initialOffset }, ...props) => {
           r="15.91549430918954"
           fill="transparent"
           stroke="#d2d3d4"
-          strokeWidth="3"
+          strokeWidth="8"
         ></circle>
         {values.map((segment, idx) => {
           const calculatedOffset = getOffset(segment.value);
@@ -58,6 +57,9 @@ const DonutGraph = ({ colors, values, icons, initialOffset }, ...props) => {
           fill="transparent"
         ></circle>
       </svg>
+      {label && (
+        <DonutGraphLabel item={label.segmentData} color={colors[label.index]} />
+      )}
     </StyledDonutGraph>
   );
 };

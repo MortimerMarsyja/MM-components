@@ -4,7 +4,6 @@ const StyledTooltip = styled.div`
   position: relative;
   width: auto;
   .membrane {
-    margin-bottom: 12px;
     height: auto;
     position: relative;
     white-space: nowrap;
@@ -14,7 +13,7 @@ const StyledTooltip = styled.div`
     overflow: hidden;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    width:auto;
+    width: auto;
   }
   .nestedTooltip {
     p {
@@ -33,10 +32,11 @@ const StyledTooltip = styled.div`
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.33s linear;
-      transition: visibility 0.3s, opacity 0.33s linear;
-      &.true {
+    transition: visibility 0.3s, opacity 0.33s linear;
+    &.true {
       visibility: visible;
       opacity: 1;
+    }
   }
 `;
 

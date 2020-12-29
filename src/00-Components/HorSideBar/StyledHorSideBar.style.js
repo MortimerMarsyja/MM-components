@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import { greyColors } from "../../07-Styles/colorPalette";
 
 const StyledHorSideBar = styled("ul")`
-  background: red;
+  background: ${greyColors[200]};
   width: 200px;
+  flex-wrap: wrap;
   height: 100%;
-  display: inline-block;
+  min-height: 100%;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   li {
     margin: 15px 15px;
