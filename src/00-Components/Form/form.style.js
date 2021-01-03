@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { greyColors } from "../../07-Styles/colorPalette";
 
 const StyledForm = styled.div`
   width: 300px;
   .form-component {
-    background-color: grey;
+    background-color: ${greyColors[500]};
     border-radius: 6px;
     padding: 12px;
     &_input-container {

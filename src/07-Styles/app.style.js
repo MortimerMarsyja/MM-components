@@ -5,6 +5,7 @@ import CSSRESET from "./cssReset.style";
 const StyledApp = styled("div")`
   ${CSSRESET}
   font-family:Arial, Helvetica, sans-serif;
+  height: 100vh;
   h1 {
     font-size: 1.66em;
     font-weight: 700;

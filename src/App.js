@@ -24,6 +24,8 @@ const MainPage = React.lazy(() => import("./01-Pages/MainPage"));
 const FormPage = React.lazy(() => import("./01-Pages/FormTestPage"));
 const TagPage = React.lazy(() => import("./01-Pages/TagPage"));
 const SwitchPage = React.lazy(() => import("./01-Pages/SwitchPage"));
+const TooltipPage = React.lazy(() => import("./01-Pages/TooltipPage"));
+const DonutGraphPage = React.lazy(() => import("./01-Pages/DonutGraphPage"));
 const OutOfBounds = React.lazy(() => import("./01-Pages/OutOfBounds"));
 
 const createReduxStore = () => {
@@ -44,15 +46,19 @@ const COMPONENT_PATHS = [
   { Component: MainPage, path: PATHS.MAIN_PAGE },
   { Component: FormPage, path: PATHS.FORM_PAGE },
   { Component: TagPage, path: PATHS.TAG_PAGE },
+  { Component: TooltipPage, path: PATHS.TOOLTIP_PAGE },
   { Component: SwitchPage, path: PATHS.SWITCH_PAGE },
+  { Component: DonutGraphPage, path: PATHS.DONUT_GRAPH_PAGE },
   { Component: OutOfBounds, path: PATHS.OUT_OF_BOUNDS },
 ];
 
 const urlList = [
-  { url: "/", name: "Main page" },
-  { url: "/form-page", name: "Form" },
-  { url: "/tag-page", name: "Tag" },
-  { url: "/switch-page", name: "Switch" },
+  { url: PATHS.MAIN_PAGE, name: "Main page" },
+  { url: PATHS.FORM_PAGE, name: "Form" },
+  { url: PATHS.TAG_PAGE, name: "Tag" },
+  { url: PATHS.SWITCH_PAGE, name: "Switch" },
+  { url: PATHS.TOOLTIP_PAGE, name: "Tooltip" },
+  { url: PATHS.DONUT_GRAPH_PAGE, name: "Donut Graph" },
 ];
 
 function App() {
@@ -63,7 +69,7 @@ function App() {
           <HorHeaderComponent>
             <Logo className="header-logo" />
           </HorHeaderComponent>
-          <div style={{ display: "flex", height: "100vh" }}>
+          <div style={{ display: "flex", height: "100%" }}>
             <HorSideBar urlList={urlList} />
             <Switch>
               {COMPONENT_PATHS.map(({ path, Component }) => (
