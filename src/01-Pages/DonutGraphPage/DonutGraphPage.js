@@ -5,16 +5,17 @@ import StyledDonutGraphPage from "./StyledDonutGraphPage.style";
 import DonutGraph from "../../00-Components/DonutGraph";
 
 const testJson = {
-  colors: ["#fa6066", "#6e64f2", "#e7eb50", "#52ad63"],
+  icons: ["🐰", "🦊", "🐷", "🙉"],
+  colors: ["#ffb997", "#f67e7d", "#843b62", "#621940"],
   values: [
-    { label: "Tenis Popularity", value: 20 },
-    { label: "Basket Popularity", value: 30 },
+    { label: "Bunny Popularity", value: 20 },
+    { label: "Fox Popularity", value: 30 },
     {
-      label: "Soccer Popularity",
+      label: "Oink Popularity",
       value: 15,
     },
     {
-      label: "Martial Arts Popularity",
+      label: "Monkey Popularity",
       value: 25,
     },
   ],
@@ -24,10 +25,11 @@ const DonutGraphPage = () => {
   return (
     <StyledDonutGraphPage>
       <h2> Donut Graph Page</h2>
-      <div style={{ width: "150px" }}>
+      <div style={{ width: "450px" }}>
         <DonutGraph
           colors={testJson.colors}
           values={testJson.values}
+          icons={testJson.icons}
           initialOffset={20}
         />
       </div>

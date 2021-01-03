@@ -2,25 +2,28 @@ import React from "react";
 // components
 import Tooltip from "../Tooltip";
 
-const DonutGraphLabel = (item) => {
+const DonutGraphLabel = ({ label, color, icon }) => {
   return (
     <div className="label-wrapper">
-      <svg height="20px">
+      <span>{icon}</span>
+      <svg height="32px">
         <circle
           className="label-color"
           cx="10"
-          cy="10"
-          r="10"
-          fill={item.color}
+          cy="15"
+          r="8"
+          fill={color}
+          stroke="#d2d3d4"
+          strokeWidth="3px"
         />
       </svg>
       <Tooltip
         className="label"
-        text={item.item.label}
-        tooltipText={item.item.label}
+        text={label.label}
+        tooltipText={label.label}
         parentLimitingSize="120px"
       />
-      <p>{item.item.value}%</p>
+      <p>{label.value}%</p>
     </div>
   );
 };

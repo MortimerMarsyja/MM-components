@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledDonutGraph = styled.div`
+  position: relative;
   .label {
     float: left;
     white-space: nowrap;
@@ -30,6 +31,14 @@ const StyledDonutGraph = styled.div`
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
     z-index: 1000;
     stroke-width: 6px;
+  }
+  .donut-icon {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+  .active {
+    border-radius: 30px;
   }
 `;
 
